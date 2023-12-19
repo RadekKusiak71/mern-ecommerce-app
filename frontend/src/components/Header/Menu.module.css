@@ -1,0 +1,16 @@
+.menu {
+    width: fit-content;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 50px;
+}
+
+.menu-link {
+    color: #929292;
+    transition: 0.3s ease-in-out;
+}
+
+.menu-link:hover {
+    color: #000000;
+}

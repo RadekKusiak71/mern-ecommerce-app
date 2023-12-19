@@ -1,0 +1,29 @@
+.welcome-container {
+    width: 700px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.welcome-logo {
+    width: 350px;
+    height: 350px;
+    margin: auto;
+}
+.welcome-container > p{
+    font-size: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #929292;
+}
+hr{
+    width: 100%;
+}
+.welcome-container > div{
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

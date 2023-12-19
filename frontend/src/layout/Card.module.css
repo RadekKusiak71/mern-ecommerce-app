@@ -1,0 +1,15 @@
+.card {
+    height: fit-content;
+    max-width: 1980px;
+    min-width: 1000px;
+    margin: auto;
+}
+
+@media (max-width:1020px) {
+    .card {
+        height: fit-content;
+        min-width: 400px;
+        margin: auto;
+    }
+
+}

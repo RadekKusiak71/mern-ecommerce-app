@@ -1,0 +1,7 @@
+.cart-button {
+    transition: 0.3s ease-in-out;
+}
+
+.cart-button:hover {
+    scale: 1.1;
+}

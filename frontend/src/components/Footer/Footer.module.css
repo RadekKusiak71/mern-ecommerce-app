@@ -1,0 +1,29 @@
+footer {
+    max-width: 1980px;
+    min-width: 700px;
+    width: 90%;
+    height: 120px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-logo {
+    height: 120px;
+}
+
+footer>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+footer>div>a>img {
+    transition: 0.3s ease-in-out;
+}
+
+footer>div>a:hover>img {
+    scale: 1.2;
+}

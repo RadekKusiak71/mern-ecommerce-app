@@ -1,0 +1,15 @@
+.header {
+    max-width: 1980px;
+    min-width: 700px;
+    width: 90%;
+    height: 120px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    height: 100px;
+}
