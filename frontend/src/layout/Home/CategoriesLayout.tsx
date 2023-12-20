@@ -25,7 +25,7 @@ const categoryBox = (props: categoryBoxProps) => {
     return (
         <div className={classes['home-category']}>
             <img src={props.image} alt={props.text} className={classes['home-category-image']} />
-            <LinkButton path={`products/${props.category}`} text={props.text} width={300} height={60} />
+            <LinkButton path={`products?${props.category}=on`} text={props.text} width={300} height={60} />
         </div>
     )
 }

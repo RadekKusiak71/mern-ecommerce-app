@@ -1,13 +1,12 @@
 .categories-container {
     max-width: 1200px;
-    min-width: 1000px;
     margin: auto;
     display: flex;
     justify-content: space-around;
     gap: 30px;
     row-gap: 60px;
-    flex-wrap: wrap;
     padding-bottom: 60px;
+    flex-wrap: wrap;
 }
 
 .home-category {
@@ -22,6 +21,6 @@
 .home-category-font {
     font-size: 35px;
     text-align: center;
-    margin: 100px 0 50px 0 ;
+    margin: 100px 0 50px 0;
     color: #929292;
 }

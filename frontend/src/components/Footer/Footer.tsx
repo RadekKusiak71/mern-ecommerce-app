@@ -12,10 +12,10 @@ const Footer = () => {
                 <img src={clothifyLogo} alt='clothify' className={classes['footer-logo']} />
             </Link>
             <div>
-                <Link to='/'>
+                <Link to='https://github.com/RadekKusiak71/mern-ecommerce-app' target='blank'>
                     <img src={codeIcon} alt='clothify' />
                 </Link>
-                <Link to='/'>
+                <Link to='https://github.com/RadekKusiak71' target='blank'>
                     <img src={gitIcon} alt='clothify' />
                 </Link>
             </div>

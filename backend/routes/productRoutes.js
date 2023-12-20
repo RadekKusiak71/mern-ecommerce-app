@@ -10,6 +10,7 @@ router.get('/products/:id', productController.retrieveProductById);
 router.get('/products/category/:categoryName', productController.retrieveProductByCategory);
 
 router.post('/products/query', productController.productsByFilters);
+router.get('/products/search/:query', productController.searchProductsByName);
 
 
 module.exports = router;

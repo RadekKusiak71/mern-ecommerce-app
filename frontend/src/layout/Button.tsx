@@ -3,7 +3,7 @@ import classes from './Button.module.css';
 
 interface ButtonProps {
     text: string
-    onClick: Function | undefined
+    onClick: any
     type: "submit" | "reset" | "button"
     disabled: true | false
     width: number
@@ -12,7 +12,14 @@ interface ButtonProps {
 
 const Button = (props: ButtonProps) => {
     return (
-        <button style={{ width: `${props.width}%`, height: `${props.height}px` }} className={classes['button']} type={props.type} onClick={() => props.onClick} disabled={props.disabled} >{props.text}</button>
+        <button
+            type={props.type}
+            style={{ width: `${props.width}%`, height: `${props.height}px` }}
+            className={classes['button']}
+            onClick={props.onClick}
+            disabled={props.disabled} >
+            {props.text}
+        </button>
     );
 };
 

@@ -52,30 +52,53 @@ const productsByFilters = async (req, res, next) => {
     try {
         let sizes = [];
         let categories = [];
+        var products = [];
 
-        // Assuming req.body.params is an array containing both categories and sizes
-        req.body.params.forEach(element => {
-            if (element.length === 1) {
-                sizes.push(element);
-            } else {
-                categories.push(element);
-            }
-        });
-
-        let filter = {};
-
-        if (categories.length > 0) {
-            filter.category = { $in: categories };
-        }
-
-        if (sizes.length > 0) {
-            // Adjust the filter for the sizes field
-            sizes.forEach(size => {
-                filter[`sizes.${size}`] = { $gt: 0 }; // Check if quantity is greater than 0
+        if (req.body.params) {
+            req.body.params.forEach(element => {
+                if (element.length === 1) {
+                    sizes.push(element);
+                } else {
+                    categories.push(element);
+                }
             });
+
+            let filter = {};
+
+            if (categories.length > 0) {
+                filter.category = { $in: categories };
+            }
+
+            if (sizes.length > 0) {
+                sizes.forEach(size => {
+                    filter[`sizes.${size}`] = { $gt: 0 };
+                });
+            }
+
+            products = await Product.find(filter);
+
+        } else {
+            products = await Product.find();
+
+        }
+        if (products.length > 0) {
+            res.status(200).json(products);
+        } else {
+            res.status(404).json({ message: 'Products not found' });
         }
 
-        const products = await Product.find(filter);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+};
+
+const searchProductsByName = async (req, res, next) => {
+    try {
+        const query = req.params.query;
+        const regex = new RegExp(query, 'i');
+
+        const products = await Product.find({ name: regex });
 
         if (products.length > 0) {
             res.status(200).json(products);
@@ -89,4 +112,4 @@ const productsByFilters = async (req, res, next) => {
 };
 
 
-module.exports = { getProducts, retrieveProductById, retrieveProductByCategory, productsByFilters };
+module.exports = { searchProductsByName, getProducts, retrieveProductById, retrieveProductByCategory, productsByFilters };
