@@ -7,22 +7,28 @@ import HomePage from './pages/HomePage';
 import Card from './layout/Card';
 import ProductsPage from './pages/ProductsPage';
 import ProductPage from './pages/ProductPage';
+import CartPage from './pages/CartPage';
+import { CartProvider } from './context/CartContext';
 
 
 function App() {
   return (
     <Router>
-      <Header />
-      <Card>
-        <div className={'main-container'}>
-          <Routes>
-            <Route path='/' element={<HomePage />} />
-            <Route path='/products' element={<ProductsPage />} />
-            <Route path='/product/:id/' element={<ProductPage />} />
-          </Routes>
-        </div>
-      </Card>
-      <Footer />
+      <CartProvider>
+        <Header />
+        <Card>
+          <div className={'main-container'}>
+            <Routes>
+              <Route path='/' element={<HomePage />} />
+              <Route path='/products' element={<ProductsPage />} />
+              <Route path='/product/:id/' element={<ProductPage />} />
+              <Route path='/cart' element={<CartPage />} />
+            </Routes>
+          </div>
+        </Card>
+        <Footer />
+
+      </CartProvider>
     </Router>
   );
 }

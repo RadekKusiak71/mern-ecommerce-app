@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useContext } from 'react'
 import classes from './ProductPage.module.css'
 import { useParams } from 'react-router-dom'
 import Button from '../layout/Button'
 import CommonProducts from '../components/CommonProducts/CommonProducts'
+import CartContext from '../context/CartContext'
 
 interface Product {
     _id: string
@@ -19,8 +20,8 @@ interface Product {
 const ProductPage = () => {
     const { id } = useParams()
     const [product, setProduct] = useState<Product | null>(null)
-    const [selectedSize, setSelectedSize] = useState<string | null>(null)
-
+    const [selectedSize, setSelectedSize] = useState<string>('')
+    const { addToCart } = useContext(CartContext)!
 
     const fetchProduct = useCallback(async () => {
         try {
@@ -45,6 +46,18 @@ const ProductPage = () => {
         setSelectedSize(size);
     };
 
+    const handleAddToCart = () => {
+        if (product && selectedSize) {
+            addToCart({
+                id: product._id,
+                name: product.name,
+                productImage: product.productImage,
+                price: product.price,
+                size: selectedSize,
+                quantity: 1,
+            });
+        }
+    };
     useEffect(() => {
         fetchProduct();
     }, [id, fetchProduct]);
@@ -79,7 +92,7 @@ const ProductPage = () => {
                                     </div>
                                 ))}
                             </fieldset>
-                            <Button type='button' text='Add to cart' disabled={false} onClick={() => console.log('Add to cart')} height={60} width={100} />
+                            <Button type='button' text='Add to cart' disabled={false} onClick={handleAddToCart} height={60} width={100} />
                         </div>
                     </>
 

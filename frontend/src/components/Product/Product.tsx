@@ -1,6 +1,5 @@
 import React from 'react'
 import classes from './Product.module.css'
-import Button from '../../layout/Button'
 import { Link } from 'react-router-dom'
 
 interface ProductProps {
@@ -32,7 +31,6 @@ const Product = (props: ProductProps) => {
                     <p> L: {props.sizes.L} </p>
                     <p> XL: {props.sizes.XL} </p>
                 </div>
-                <Button type='button' text='Add to cart' disabled={false} onClick={() => console.log('Add to cart')} height={40} width={100} />
             </div>
         </div>
     )
