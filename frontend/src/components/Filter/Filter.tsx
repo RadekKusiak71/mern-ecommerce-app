@@ -8,6 +8,7 @@ interface FilterDivProps {
     category: string | undefined
 }
 
+
 const sizes = [
     { name: 'S', category: undefined },
     { name: 'M', category: undefined },
@@ -50,7 +51,7 @@ const Filter = () => {
         <form>
             <div className={classes['filters-container']}>
                 <div className={classes['filters-category']}>
-                    <p className={classes['filters-header']}>Sizes</p>
+                    <p className={classes['filters-header']}>Categories</p>
                     {categories.map((size, index) => (
                         <div key={index}>
                             {filterOption(size)}

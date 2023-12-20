@@ -10,8 +10,7 @@ const HomeWelcome = () => {
             <p>Buy your favourites<br /> clothes</p>
             <hr />
             <div>
-                <LinkButton text='Categories' width={250} height={65} path='#home-categories' />
-                <LinkButton text='Products' width={250} height={65} path='products' />
+                <LinkButton text='Products' width={500} height={65} path='products' />
             </div>
         </div>
     )

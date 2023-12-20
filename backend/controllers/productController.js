@@ -45,18 +45,48 @@ const retrieveProductByCategory = async (req, res, next) => {
         console.error(error);
         res.status(500).send('Internal Server Error');
     }
-}
+};
 
 
-const productsByQuery = async (req, res, next) => {
-    const products = await Product.find({
-        $or: [
-            {
-                category: { $in: req.body.categories }
+const productsByFilters = async (req, res, next) => {
+    try {
+        let sizes = [];
+        let categories = [];
+
+        // Assuming req.body.params is an array containing both categories and sizes
+        req.body.params.forEach(element => {
+            if (element.length === 1) {
+                sizes.push(element);
+            } else {
+                categories.push(element);
             }
-        ]
-    })
-    console.log(products)
-}
+        });
 
-module.exports = { getProducts, retrieveProductById, retrieveProductByCategory, productsByQuery };
+        let filter = {};
+
+        if (categories.length > 0) {
+            filter.category = { $in: categories };
+        }
+
+        if (sizes.length > 0) {
+            // Adjust the filter for the sizes field
+            sizes.forEach(size => {
+                filter[`sizes.${size}`] = { $gt: 0 }; // Check if quantity is greater than 0
+            });
+        }
+
+        const products = await Product.find(filter);
+
+        if (products.length > 0) {
+            res.status(200).json(products);
+        } else {
+            res.status(404).json({ message: 'Products not found' });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+};
+
+
+module.exports = { getProducts, retrieveProductById, retrieveProductByCategory, productsByFilters };
