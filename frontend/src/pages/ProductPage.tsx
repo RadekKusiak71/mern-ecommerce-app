@@ -49,7 +49,7 @@ const ProductPage = () => {
     const handleAddToCart = () => {
         if (product && selectedSize) {
             addToCart({
-                id: product._id,
+                productId: product._id,
                 name: product.name,
                 productImage: product.productImage,
                 price: product.price,

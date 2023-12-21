@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import classes from './CartPage.module.css';
 import CartContext from '../context/CartContext';
+import LinkButton from '../layout/LinkButton';
 
 const CartPage = () => {
     const { cart, removeFromCart } = useContext(CartContext)!;
@@ -41,6 +42,7 @@ const CartPage = () => {
                     <div className={classes['cart-total']}>
                         <p>Total: ${fullPrice}</p>
                     </div>
+                    <LinkButton path='order' text='order' width={500} height={50} />
                 </>
             ) : (
                 <h2>Cart is empty</h2>

@@ -1,7 +1,7 @@
 import React, { createContext, ReactNode, useState } from 'react';
 
 interface CartItem {
-    id: string
+    productId: string
     name: string
     productImage: string
     price: number
@@ -39,7 +39,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
             }
             updateCart([product]);
         } else {
-            const existingProduct = cart.find((item) => item.id === product.id && item.size === product.size);
+            const existingProduct = cart.find((item) => item.productId === product.productId && item.size === product.size);
 
             if (existingProduct) {
                 existingProduct.quantity += 1;
@@ -56,7 +56,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     const removeFromCart = (productId: string, productSize: string) => {
         if (cart) {
             const updatedCart = cart.filter(
-                (item) => item.id !== productId || item.size.toLowerCase() !== productSize.toLowerCase()
+                (item) => item.productId !== productId || item.size.toLowerCase() !== productSize.toLowerCase()
             );
             updateCart(updatedCart);
         }
